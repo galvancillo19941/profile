@@ -1,0 +1,20 @@
+$breakpoints: (
+        small: 200px,
+        xsmall: 500px,
+        medium: 768px,
+        large: 769px,
+        xlarge: 1200px,
+        xxlarge: 1440px,
+);
+
+@mixin breakpoint($breakpoint: md, $key: min, $orientation: false) {
+  @if ($orientation) {
+    @media (#{$key}-width: map-get($breakpoints, $breakpoint)) and (orientation : $orientation) {
+      @content;
+    }
+  } @else {
+    @media (#{$key}-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}

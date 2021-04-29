@@ -49,32 +49,35 @@ function handleSubmit() {
                                 {text}
                             </Typist>)}
                     </TypistLoop>
-                    {/*<Typist>*/}
-                    {/*    <h1 className="text-white">Web Designer</h1>*/}
-                    {/*    <Typist.Backspace count={30} delay={200} />*/}
-                    {/*    <h1 className="text-white"> Web Developer </h1>*/}
-                    {/*</Typist>*/}
+                   <button className="btn__primary mt-5">
+                       Contactame
+                   </button>
                 </div>
             </div>
-        </section>
-        <section
-            id="section2"
-            style={{ height: "800px", background: "white" }}
-        >
-            <div className="container">
-                <div className="row py-5">
-                    <div className="col-12 text-center">
-                        <h1>holaa</h1>
-                    </div>
-                </div>
+            <div className="scroll-efect">
+                    <span className="mouse">
+                            <span className="mouse-movement"></span>
+                    </span>
             </div>
         </section>
-        <section
-            id="section3"
-            style={{ height: "800px", background: "yellow" }}
-        >
-            section 3
-        </section>
+        {/*<section*/}
+        {/*    id="section2"*/}
+        {/*    style={{ height: "800px", background: "white" }}*/}
+        {/*>*/}
+        {/*    <div className="container">*/}
+        {/*        <div className="row py-5">*/}
+        {/*            <div className="col-12 text-center">*/}
+        {/*                <h1>holaa</h1>*/}
+        {/*            </div>*/}
+        {/*        </div>*/}
+        {/*    </div>*/}
+        {/*</section>*/}
+        {/*<section*/}
+        {/*    id="section3"*/}
+        {/*    style={{ height: "800px", background: "yellow" }}*/}
+        {/*>*/}
+        {/*    section 3*/}
+        {/*</section>*/}
 
         {/*<h1>Example</h1>*/}
         {/*<div className="container">*/}

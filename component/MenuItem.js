@@ -1,5 +1,6 @@
-import * as React from "react";
+import React, {useState} from "react";
 import { motion } from "framer-motion";
+import Scrollspy from "react-scrollspy";
 
 const variants = {
     open: {
@@ -18,21 +19,47 @@ const variants = {
     }
 };
 
-const colors = ['#FF008C', "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
-const items = ['menu 1','menu 2','menu 3','menu 4', 'menu 5', ]
-
-export const MenuItem = ({ i }) => {
-    const style = { border: `2px solid ${colors[i]}` };
-    const menu = items[i]
+export const MenuItem = () => {
+    const [menus, setMenu] = useState([
+        {
+            id: 0,
+            menu: 'Inicio',
+            section: '#section1'
+        },
+        {
+            id: 1,
+            menu: 'Acerca de',
+            section: '#section2'
+        },
+        {
+            id: 2,
+            menu: 'Servicios',
+            section: '#section3'
+        }
+    ])
     return (
-        <motion.li
-            variants={variants}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-        >
-            <div className="icon-placeholder" style={style} />
-            <div className="text-placeholder" style={style} children={menu}>
-            </div>
-        </motion.li>
+        <div className="items items-header-responsive">
+                <Scrollspy
+                    offset={-200}
+                    items={["section1", "section2", "section3"]}
+                    currentClassName="is-current"
+                >
+                    {
+                        menus.map((item, key) =>
+                            <motion.li
+                                key={key}
+                                variants={variants}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <a href={item.section} children={item.menu}>
+                                </a>
+                            </motion.li>
+                        )
+                    }
+
+                </Scrollspy>
+        </div>
+
     );
 };
