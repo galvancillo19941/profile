@@ -6,16 +6,25 @@
     grid-template-columns: 1fr;
     padding: 0 20px;
 
+    @include breakpoint(medium) {
+      grid-template-columns: 50% 50%;
+
+    }
+
+    @include breakpoint(xlarge) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
     .description {
       order: 2;
+
+      @include breakpoint(large) {
+        order: 0;
+      }
     }
 
     .Skills {
       order: 3;
-    }
-
-    @include breakpoint(large) {
-      grid-template-columns: 1fr 1fr 1fr;
     }
 
     h5 {
@@ -30,8 +39,14 @@
       height: auto;
       width: 100%;
 
-      @include breakpoint(large) {
+      @include breakpoint(medium) {
+        height: auto;
+        width: 100%;
+      }
+
+      @include breakpoint(xlarge) {
         height: 450px;
+        width: auto;
       }
     }
     .progress-container {
