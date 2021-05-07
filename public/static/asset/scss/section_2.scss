@@ -1,0 +1,41 @@
+@import "breackpoint";
+
+#section2 {
+  .container-profile {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+
+    .description {
+      order: 2;
+    }
+
+    .Skills {
+      order: 3;
+    }
+
+    @include breakpoint(large) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    h5 {
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    img {
+      height: auto;
+      width: 100%;
+
+      @include breakpoint(large) {
+        height: 450px;
+      }
+    }
+    .progress-container {
+      margin-top: 1.2rem;
+    }
+  }
+}

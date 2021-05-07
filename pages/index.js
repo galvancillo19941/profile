@@ -1,40 +1,47 @@
-import { Button, Card  } from 'antd';
-import { useEffect, useState } from "react";
+import {Fragment} from "react";
 import Typist from 'react-typist';
-import TypistLoop from 'react-typist-loop'
-import CUD from "../utils-config/call";
+import TypistLoop from 'react-typist-loop';
+import { Progress } from 'antd';
+import {
+    DownloadOutlined
+} from '@ant-design/icons';
+
 import Header from "../component/Header";
 
-import translate from "translate";
 
 export default function Home() {
 
-const [listado, setListado] = useState('')
-const [usuario, setOtros] = useState('')
-
-
-useEffect( async ()=> {
-    // if (listado !== '' || usuario !== '') return
-    //     CUD('posts').then(responseBody => {
-    //         setListado(responseBody)
-    //     })
-    // const text = await translate("Hello world", "es");
-    // console.log(text);
-}, [listado, usuario])
-
-function handleSubmit() {
-    CUD('users').then(responseBody => {
-        setOtros(responseBody)
-    })
-}
-
-// const text = translate("Hello world", "es");
-// console.log(text);
+    const Skills = [
+        {
+            id: 1,
+            name: 'HTML / CSS / SASS / STYLUS',
+            percent: 95
+        },
+        {
+            id: 2,
+            name: 'JAVASCRIPT',
+            percent: 70
+        },
+        {
+            id: 3,
+            name: 'REACT.JS',
+            percent: 60
+        },
+        {
+            id: 4,
+            name: 'NEXT.JS',
+            percent: 70
+        },
+        {
+            id: 5,
+            name: 'BOOTSTRAP',
+            percent: 100
+        }
+    ]
 
   return (
     <div>
         <Header/>
-
         <section id="section1">
             <div className="container__text">
                 <h4 className="text-white">WELCOME TO MY WEBSITE</h4>
@@ -60,54 +67,66 @@ function handleSubmit() {
                     </span>
             </div>
         </section>
-        {/*<section*/}
-        {/*    id="section2"*/}
-        {/*    style={{ height: "800px", background: "white" }}*/}
-        {/*>*/}
-        {/*    <div className="container">*/}
-        {/*        <div className="row py-5">*/}
-        {/*            <div className="col-12 text-center">*/}
-        {/*                <h1>holaa</h1>*/}
-        {/*            </div>*/}
-        {/*        </div>*/}
-        {/*    </div>*/}
-        {/*</section>*/}
+
+        <section
+            id="section2"
+            style={{ background: "white" }}
+        >
+            <div className="container">
+                <div className="row py-5">
+                    <div className="container-profile">
+                        <div className="mt-2 mt-md-5 description">
+                            <h2 className="font-weight-bold">Jesús González</h2>
+                            <h5 className="">Front-end Developer</h5>
+                            <p className="mt-4">
+                                Soy un desarrollador Front-end, trabajando durante los
+                                últimos cuatro años. Tengo experiencia trabajando con clientes locales.
+                                Tengo un vasto conocimiento en html, css, sass, Bootstrap
+                                Javascript, React, Next-Js, Hooks, Redux (javascript framewok), etc.
+                            </p>
+                            <a href="/static/asset/pdf/cv.pdf" target="_blank">
+                                <button className="btn__primary mt-4 align-items-center d-none d-md-flex">
+                                    Descargar CV
+                                    <DownloadOutlined className="ml-2"/>
+                                </button>
+                            </a>
+                        </div>
+                        <div className="container-img">
+                            <img src="/static/asset/img/imgProfile.jpg" alt=""/>
+                        </div>
+                        <div className="mt-5 Skills">
+                            <h2 className="font-weight-bold">Mis habilidades</h2>
+                            <div>
+                                {Skills.map((item, key) =>
+                                    <Fragment>
+                                            <div className="progress-container">
+                                                <span>{item.name}</span>
+                                                <Progress percent={item.percent} status="active" strokeColor={{
+                                                    '0%': '#108ee9',
+                                                    '100%': '#E91E63',
+                                                }}/>
+                                            </div>
+                                    </Fragment>
+                                )}
+                            </div>
+                            <a href="/static/asset/pdf/cv.pdf" target="_blank">
+                                <button className="btn__primary mt-5 d-flex d-md-none align-items-center">
+                                    Descargar CV
+                                    <DownloadOutlined className="ml-2"/>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         {/*<section*/}
         {/*    id="section3"*/}
         {/*    style={{ height: "800px", background: "yellow" }}*/}
         {/*>*/}
         {/*    section 3*/}
         {/*</section>*/}
-
-        {/*<h1>Example</h1>*/}
-        {/*<div className="container">*/}
-        {/*    <div className="row">*/}
-        {/*        {listado && listado.map((item, key) =>*/}
-        {/*            <div className="col-4 mt-5 d-flex w-100" key={key}>*/}
-        {/*                <Card title={item.title} bordered={false} style={{ width: 300 }}>*/}
-        {/*                    <p>{item.body}</p>*/}
-        {/*                </Card>*/}
-        {/*            </div>*/}
-        {/*        )}*/}
-        {/*    </div>*/}
-        {/*    <div className="row">*/}
-        {/*        {usuario && usuario.map((item, key) =>*/}
-        {/*            <div className="col-4 mt-5 d-flex w-100" key={key}>*/}
-        {/*                <Card title={item.username} bordered={false} style={{ width: 300 }}>*/}
-        {/*                    <p>{item.email}</p>*/}
-        {/*                </Card>*/}
-        {/*            </div>*/}
-        {/*        )}*/}
-        {/*    </div>*/}
-        {/*    <div className="col-12 mt-5 text-center">*/}
-        {/*        <Button type="primary" onClick={handleSubmit}>*/}
-        {/*            Primary*/}
-        {/*        </Button>*/}
-        {/*    </div>*/}
-        {/*</div>*/}
-
-
-
     </div>
   )
 }

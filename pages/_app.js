@@ -23,7 +23,7 @@ export default class extends App {
         return (
             <Container>
                 <Head>
-                    <title>perfil | jesus G</title>
+                    <title>perfil | jesus G</title>h
                     <meta charSet="utf-8"/>
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
