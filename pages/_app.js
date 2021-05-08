@@ -1,10 +1,14 @@
 import React from 'react'
+import withRedux from 'next-redux-wrapper'
+import { makeStore } from '../redux/store/store'
+import { fromJS } from 'immutable'
+import { Provider } from 'react-redux'
 import App, {Container} from 'next/app'
 import Head from 'next/head'
 import 'antd/dist/antd.css'
 import '../public/static/asset/scss/app.scss'
 
-export default class extends App {
+class MyApp extends App {
     static async getInitialProps({Component, ctx}) {
         let pageProps = {}
 
@@ -18,7 +22,7 @@ export default class extends App {
 
     render() {
 
-        const {Component, pageProps} = this.props
+        const {Component, pageProps, store} = this.props
 
         return (
             <Container>
@@ -51,8 +55,17 @@ export default class extends App {
                             crossOrigin="anonymous"/>
 
                 </Head>
-                <Component {...Object.assign(pageProps)} />
+                <Provider store={store}>
+                   <div>
+                       <Component {...Object.assign(pageProps)} />
+                   </div>
+                </Provider>
             </Container>
         )
     }
 }
+
+export default withRedux(makeStore, {
+    serializeState: state => state.toJS(),
+    deserializeState: state => fromJS(state)
+})(MyApp)

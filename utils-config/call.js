@@ -1,15 +1,14 @@
-const superagent = require('superagent');
+import axios from 'axios'
+import { apiURL } from './config'
 
-async function CUD(url) {
-    return await superagent.get(`https://jsonplaceholder.typicode.com/${url}`)
-        .type('json')
-        .accept('json')
-        .then(response => {
-            return response.body;
-        })
-        .then(responseBody => {
-            return responseBody;
-        });
+function Call(url, method, data = null) {
+    return axios({
+        method: method,
+        url: `${apiURL}${url}`,
+        data
+    }).then((response) => {
+        return response
+    })
 }
 
-export default CUD
+export default Call

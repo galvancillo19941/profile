@@ -1,9 +1,12 @@
+import {useEffect, useRef} from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import { motion, useCycle } from "framer-motion";
-import { useEffect, useRef } from "react";
 import {MenuToggle} from "./MenuToogle";
 import {Navigation} from "./Navigation";
 import Scrollspy from "react-scrollspy";
 import useScrollPosition from "@react-hook/window-scroll";
+
+import {HeaderItems} from '../redux/reducers/header/actions'
 
 export const useDimensions = ref => {
     const dimensions = useRef({ width: 0, height: 0 });
@@ -37,12 +40,19 @@ const sidebar = {
 };
 
 export default function Header() {
+
+    const headerItem = useSelector((state) => state.get('headerItems').get('headerDataReducer'))
+
+    const dispatch = useDispatch()
+
+    useEffect(()=> {
+        dispatch(HeaderItems())
+    },[])
+
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = useRef(null);
     const { height } = useDimensions(containerRef);
     const scrollY = useScrollPosition(60 /*frames per second*/);
-
-    console.log(scrollY)
 
     return (
         <div>
@@ -61,21 +71,11 @@ export default function Header() {
                                 items={["section1", "section2", "section3"]}
                                 currentClassName="is-current"
                             >
-                                <li>
-                                    <a href="#section1">Inicio</a>
-                                </li>
-                                <li>
-                                    <a href="#section2">acerca de</a>
-                                </li>
-                                <li>
-                                    <a href="#section3">Servicios</a>
-                                </li>
-                                <li>
-                                    <a href="#section4">Portafolio</a>
-                                </li>
-                                <li>
-                                    <a href="#section5">Contacto</a>
-                                </li>
+                                {headerItem && headerItem.map((item) =>
+                                       <li key={item.id}>
+                                           <a href={`#${item.section}`}>{item.name}</a>
+                                       </li>
+                                )}
                             </Scrollspy>
                         </div>
                     </div>

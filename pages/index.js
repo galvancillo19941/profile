@@ -98,15 +98,13 @@ export default function Home() {
                             <h2 className="font-weight-bold">Mis habilidades</h2>
                             <div>
                                 {Skills.map((item, key) =>
-                                    <Fragment>
-                                            <div className="progress-container">
-                                                <span>{item.name}</span>
-                                                <Progress percent={item.percent} status="active" strokeColor={{
-                                                    '0%': '#108ee9',
-                                                    '100%': '#E91E63',
-                                                }}/>
-                                            </div>
-                                    </Fragment>
+                                    <div className="progress-container" key={key}>
+                                        <span>{item.name}</span>
+                                        <Progress percent={item.percent} status="active" strokeColor={{
+                                            '0%': '#108ee9',
+                                            '100%': '#E91E63',
+                                        }}/>
+                                    </div>
                                 )}
                             </div>
                             <a href="/static/asset/pdf/cv.pdf" target="_blank">
