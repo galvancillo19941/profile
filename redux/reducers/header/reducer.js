@@ -20,6 +20,7 @@ function headerErrorsReducer (state = initialState.get('headerItems').get('error
 function headerDataReducer (state = initialState.get('headerItems').get('data'), action = {}) {
     switch (action.type) {
         case typeActions.HEADER_LOAD:
+            console.log('aqui', action)
             return action.payload
         default:
             return state
@@ -32,3 +33,4 @@ const headerReducer = combineReducers({
 })
 
 export default headerReducer
+

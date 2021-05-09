@@ -1,4 +1,4 @@
-import {Fragment} from "react";
+import { useDispatch } from 'react-redux'
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import { Progress } from 'antd';
@@ -7,9 +7,12 @@ import {
 } from '@ant-design/icons';
 
 import Header from "../component/Header";
+import {HeaderItems} from "../redux/reducers/header/actions";
+
+import { makeStore } from '../redux/store/store'
 
 
-export default function Home() {
+export default function Home({}) {
 
     const Skills = [
         {
@@ -127,4 +130,13 @@ export default function Home() {
         {/*</section>*/}
     </div>
   )
+}
+
+Home.getInitialProps = async ({store}) => {
+    await store.dispatch(HeaderItems())
+    const {headerItem} = store.getState()
+    console.log('si estos son los datos', store)
+    return {
+
+    }
 }
