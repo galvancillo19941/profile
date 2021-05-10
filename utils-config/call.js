@@ -1,9 +1,10 @@
 import axios from 'axios'
+import { apiURL } from './config'
 
 function Call(url, method, data = null) {
     return axios({
         method: method,
-        url: `https://perfil-develope.herokuapp.com/api/${url}`,
+        url: `${apiURL}${url}`,
         data
     }).then((response) => {
         return response

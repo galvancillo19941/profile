@@ -7,10 +7,6 @@ import {
 } from '@ant-design/icons';
 
 import Header from "../component/Header";
-import {HeaderItems} from "../redux/reducers/header/actions";
-
-import { makeStore } from '../redux/store/store'
-
 
 export default function Home({}) {
 
@@ -47,7 +43,7 @@ export default function Home({}) {
         <Header/>
         <section id="section1">
             <div className="container__text">
-                <h4 className="text-white">WELCOME TO MY WEBSITE</h4>
+                <h4 className="text-white">Bienvenido a mi sitio web</h4>
                 <div>
                     <TypistLoop interval={3000}>
                         {[
@@ -130,13 +126,4 @@ export default function Home({}) {
         {/*</section>*/}
     </div>
   )
-}
-
-Home.getInitialProps = async ({store}) => {
-    await store.dispatch(HeaderItems())
-    const {headerItem} = store.getState()
-    console.log('si estos son los datos', store)
-    return {
-
-    }
 }
