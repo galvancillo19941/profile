@@ -5,7 +5,12 @@ function Call(url, method, data = null) {
     return axios({
         method: method,
         url: `${apiURL}${url}`,
-        data
+        data,
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        mode: "cors",
     }).then((response) => {
         return response
     })

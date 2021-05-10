@@ -43,7 +43,7 @@ export default function Home({}) {
         <Header/>
         <section id="section1">
             <div className="container__text">
-                <h4 className="text-white">Bienvenido a mi sitio web</h4>
+                <h4 className="text-white">Bienvenido a mi sitio Web</h4>
                 <div>
                     <TypistLoop interval={3000}>
                         {[
