@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux'
-import Typist from 'react-typist';
+import React, { useEffect, useRef } from 'react'
 import TypistLoop from 'react-typist-loop';
+import Typist from 'react-typist';
 import { Progress } from 'antd';
 import {
     DownloadOutlined
@@ -8,7 +8,22 @@ import {
 
 import Header from "../component/Header";
 
+import lottie from 'lottie-web'
+
 export default function Home({}) {
+
+    const container = useRef(null)
+
+    useEffect(() => {
+        lottie.loadAnimation({
+            container: container.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            mode: 'bounce',
+            animationData: require('../public/static/asset/img/profile.json')
+        })
+    }, [])
 
     const Skills = [
         {
@@ -61,9 +76,9 @@ export default function Home({}) {
                 </div>
             </div>
             <div className="scroll-efect">
-                    <span className="mouse">
-                            <span className="mouse-movement"></span>
-                    </span>
+                <span className="mouse">
+                        <span className="mouse-movement"></span>
+                </span>
             </div>
         </section>
 
@@ -91,7 +106,8 @@ export default function Home({}) {
                             </a>
                         </div>
                         <div className="container-img">
-                            <img src="/static/asset/img/imgProfile.jpg" alt=""/>
+                            <div ref={container}/>
+                            {/*<img src="/static/asset/img/imgProfile.jpg" alt=""/>*/}
                         </div>
                         <div className="mt-5 Skills">
                             <h2 className="font-weight-bold">Mis habilidades</h2>

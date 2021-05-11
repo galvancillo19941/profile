@@ -1,4 +1,4 @@
-export const dataItems = [
+const dataItems = [
     {
         id: 0,
         name: 'Inicio',
@@ -25,3 +25,5 @@ export const dataItems = [
         section: 'section5'
     }
 ]
+
+export default dataItems

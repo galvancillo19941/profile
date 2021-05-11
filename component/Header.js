@@ -1,12 +1,11 @@
 import {useEffect, useRef} from "react";
-import { useDispatch, useSelector } from 'react-redux'
 import { motion, useCycle } from "framer-motion";
 import {MenuToggle} from "./MenuToogle";
 import {Navigation} from "./Navigation";
 import Scrollspy from "react-scrollspy";
 import useScrollPosition from "@react-hook/window-scroll";
 
-import {HeaderItems} from '../redux/reducers/header/actions'
+import dataItems from '../APIDATA/headerItems'
 
 export const useDimensions = ref => {
     const dimensions = useRef({ width: 0, height: 0 });
@@ -41,14 +40,6 @@ const sidebar = {
 
 export default function Header() {
 
-    const headerItem = useSelector((state) => state.get('headerItems').get('headerDataReducer'))
-
-    const dispatch = useDispatch()
-
-    useEffect(()=> {
-        dispatch(HeaderItems())
-    },[])
-
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = useRef(null);
     const { height } = useDimensions(containerRef);
@@ -71,7 +62,7 @@ export default function Header() {
                                 items={["section1", "section2", "section3"]}
                                 currentClassName="is-current"
                             >
-                                {headerItem && headerItem.map((item) =>
+                                {dataItems && dataItems.map((item) =>
                                        <li key={item.id}>
                                            <a href={`#${item.section}`}>{item.name}</a>
                                        </li>
