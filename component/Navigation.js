@@ -11,12 +11,9 @@ const variants = {
     }
 };
 
-export const Navigation = () => (
+export const Navigation = ({headerItems, toggle}) => (
     <motion variants={variants}>
-        {itemIds.map(i => (
-            <MenuItem i={i} key={i} />
-        ))}
+        <MenuItem items={headerItems} toggle={toggle}/>
     </motion>
 );
 
-const itemIds = [0, 1, 2, 3, 4];

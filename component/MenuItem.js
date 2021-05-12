@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { motion } from "framer-motion";
 import Scrollspy from "react-scrollspy";
+import dataItems from "../APIDATA/headerItems";
 
 const variants = {
     open: {
@@ -19,24 +20,7 @@ const variants = {
     }
 };
 
-export const MenuItem = () => {
-    const [menus, setMenu] = useState([
-        {
-            id: 0,
-            menu: 'Inicio',
-            section: '#section1'
-        },
-        {
-            id: 1,
-            menu: 'Acerca de',
-            section: '#section2'
-        },
-        {
-            id: 2,
-            menu: 'Servicios',
-            section: '#section3'
-        }
-    ])
+export const MenuItem = ({items, toggle}) => {
     return (
         <div className="items items-header-responsive">
                 <Scrollspy
@@ -45,14 +29,15 @@ export const MenuItem = () => {
                     currentClassName="is-current"
                 >
                     {
-                        menus.map((item, key) =>
+                        items.map((item, key) =>
                             <motion.li
+                                onClick={toggle}
                                 key={key}
                                 variants={variants}
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <a href={item.section} children={item.menu}>
+                                <a href={`#${item.section}`} children={item.name}>
                                 </a>
                             </motion.li>
                         )
