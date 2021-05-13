@@ -78,9 +78,11 @@ export default function Home({}) {
                 </div>
             </div>
             <div className="scroll-efect">
-                <span className="mouse">
+                <a href="#section2">
+                    <span className="mouse">
                         <span className="mouse-movement"></span>
-                </span>
+                    </span>
+                </a>
             </div>
         </section>
 
