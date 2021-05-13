@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { motion } from "framer-motion";
 import Scrollspy from "react-scrollspy";
-import dataItems from "../APIDATA/headerItems";
 
 const variants = {
     open: {
@@ -20,10 +19,22 @@ const variants = {
     }
 };
 
-export const MenuItem = ({items, toggle}) => {
+export const MenuItem = ({items, toggle, toggleOpen}) => {
+    
+    const [showItems, setShowItems] = useState('none')
+
+    useEffect(()=> {
+        if(toggleOpen === true ) {
+           setShowItems('block')
+        } else {
+            setShowItems('none')
+        }
+    }, [toggleOpen])
+
     return (
         <div className="items items-header-responsive">
                 <Scrollspy
+                    style={{ display: `${showItems}`}}
                     offset={-200}
                     items={["section1", "section2", "section3"]}
                     currentClassName="is-current"

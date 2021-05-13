@@ -149,7 +149,7 @@ export default function Home({}) {
                     <div className="container-images-portafolio">
                         {
                             dataProjects.map((item, key) =>
-                                <div className="tab">
+                                <div className="tab" key={key}>
                                     <div className="column-8 hide-xs box-tab hide-sm hide-md">
                                         <div className="effect grid-width8 effect-seven">
                                             <img src={item.img}

@@ -11,9 +11,9 @@ const variants = {
     }
 };
 
-export const Navigation = ({headerItems, toggle}) => (
+export const Navigation = ({headerItems, toggle, toggleOpen}) => (
     <motion variants={variants}>
-        <MenuItem items={headerItems} toggle={toggle}/>
+        <MenuItem items={headerItems} toggle={toggle} toggleOpen={toggleOpen}/>
     </motion>
 );
 

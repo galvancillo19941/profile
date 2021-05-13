@@ -84,7 +84,7 @@ export default function Header() {
                        ref={containerRef}
                    >
                        <motion.div className="background" variants={sidebar} />
-                       <Navigation headerItems={dataItems} toggle={() => toggleOpen()}/>
+                       <Navigation headerItems={dataItems} toggle={() => toggleOpen()} toggleOpen={isOpen}/>
                        <MenuToggle toggle={() => toggleOpen()}/>
                    </motion.nav>
                </div>
