@@ -10,6 +10,8 @@ import Header from "../component/Header";
 
 import lottie from 'lottie-web'
 
+import dataProjects from '../APIDATA/dataProjects'
+
 export default function Home({}) {
 
     const container = useRef(null)
@@ -134,12 +136,34 @@ export default function Home({}) {
             </div>
         </section>
 
-        {/*<section*/}
-        {/*    id="section3"*/}
-        {/*    style={{ height: "800px", background: "yellow" }}*/}
-        {/*>*/}
-        {/*    section 3*/}
-        {/*</section>*/}
+        <section
+            id="section3"
+        >
+            <div className="container">
+                <div className="row pb-5">
+                    <div className="col-12 text-center">
+                        <h2>Portafolio</h2>
+                    </div>
+                    <div className="container-images-portafolio">
+                        {
+                            dataProjects.map((item, key) =>
+                                <div className="tab">
+                                    <div className="column-8 hide-xs box-tab hide-sm hide-md">
+                                        <div className="effect grid-width8 effect-seven">
+                                            <img src={item.img}
+                                                 className=""/>
+                                            <div className="tab-text">
+                                                <p>{item.title}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
   )
 }

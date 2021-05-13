@@ -10,19 +10,14 @@ const dataItems = [
         section: 'section2'
     },
     {
-        id: 2,
-        name: 'Servicios',
-        section: 'section3'
-    },
-    {
         id: 3,
         name: 'Portafolio',
-        section: 'section4'
+        section: 'section3'
     },
     {
         id: 4,
         name: 'Contacto',
-        section: 'section5'
+        section: 'section4'
     }
 ]
 
